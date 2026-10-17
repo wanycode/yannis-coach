@@ -1,0 +1,19 @@
+{
+  "name": "yannis-ouachek-coaching",
+  "version": "1.0.0",
+  "description": "Site officiel de Yannis Ouachek - Coaching Sportif HYROX & Running - Team Sangliers",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "coaching",
+    "hyrox",
+    "running",
+    "yannis-ouachek",
+    "team-sangliers",
+    "hybrid-training"
+  ],
+  "author": "Yannis Ouachek",
+  "license": "ISC"
+}

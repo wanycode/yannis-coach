@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Athletic Brand Mark OUACH TRAINING -->
+  <g font-family="system-ui, -apple-system, 'Impact', 'Syne', 'Oswald', sans-serif" font-weight="900" letter-spacing="-1">
+    <text x="0" y="44" fill="#F2F0E9" font-size="44" font-weight="900">OUACH</text>
+    <text x="0" y="72" fill="#C4D600" font-size="24" font-weight="800" letter-spacing="4">TRAINING</text>
+  </g>
+  <rect x="180" y="24" width="8" height="48" fill="#C4D600" transform="skewX(-15)" />
+  <rect x="194" y="32" width="5" height="40" fill="#737D77" transform="skewX(-15)" />
+</svg>
