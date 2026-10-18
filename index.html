@@ -18,7 +18,7 @@
   <meta property="og:image" content="moi.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
 
   <!-- Stylesheet direct sans sous-dossier -->
   <link rel="stylesheet" href="style.css">
@@ -30,7 +30,7 @@
     <div class="navbar-container navbar-inner">
       <a href="#accueil" class="brand-link" aria-label="Accueil Yannis Ouachek">
         <div class="brand-logo-wrap">
-          <img src="logo.png" alt="OUACH TRAINING Logo" class="brand-logo-img">
+          <img src="logo.jpg" alt="OUACH TRAINING Logo" class="brand-logo-img" width="1080" height="1080" decoding="async">
         </div>
         <div class="brand-subtext">
           <span class="brand-title">YANNIS OUACHEK</span>
@@ -55,7 +55,7 @@
           <span class="nav-instagram-label">INSTAGRAM</span>
         </a>
         <a href="#candidature" class="btn btn-lemon btn-nav-cta">REJOINDRE LA TEAM</a>
-        <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+        <button class="burger-btn" id="burger-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-drawer" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
@@ -69,7 +69,7 @@
         <span class="brand-title">YANNIS OUACHEK</span>
         <span class="brand-subtitle">COACH DIPLÔMÉ D'ÉTAT — HYROX & RUNNING</span>
       </div>
-      <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Fermer le menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
@@ -667,7 +667,7 @@
       <div class="footer-top">
         <div>
           <div class="brand-logo-wrap" style="margin-bottom:1rem;">
-            <img src="logo.png" alt="Logo OUACH TRAINING" class="brand-logo-img">
+            <img src="logo.jpg" alt="Logo OUACH TRAINING" class="brand-logo-img" width="1080" height="1080" decoding="async">
           </div>
           <p style="color:var(--color-offwhite-dim); font-size:0.95rem; line-height:1.6; max-width:320px; margin-bottom:1rem;">
             YANNIS OUACHEK<br>
@@ -788,11 +788,15 @@
 
       burgerBtn?.addEventListener('click', () => {
         drawer?.classList.add('open');
+        drawer?.setAttribute('aria-hidden', 'false');
+        burgerBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
       });
 
       function closeDrawer() {
         drawer?.classList.remove('open');
+        drawer?.setAttribute('aria-hidden', 'true');
+        burgerBtn?.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
 

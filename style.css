@@ -304,6 +304,7 @@ section {
   gap: 1.35rem; /* Espacement net et respirant entre le logo et le texte */
   text-decoration: none;
   flex-shrink: 0;
+  min-width: 0;
   transition: opacity var(--transition-fast);
 }
 
@@ -319,9 +320,9 @@ section {
 
 .brand-logo-img {
   height: 52px;
+  aspect-ratio: 1;
   width: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
+  object-fit: contain;
   display: block;
 }
 
@@ -359,14 +360,15 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(-35px); /* Décalage net vers la gauche */
+  min-width: 0;
+  transform: none;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1rem, 1.8vw, 2.4rem); /* Espacement aéré et équilibré */
+  gap: clamp(0.55rem, 1vw, 1.1rem);
   list-style: none;
   margin: 0 auto;
   padding: 0;
@@ -378,13 +380,13 @@ section {
   justify-content: center;
   text-align: center;
   font-family: var(--font-athletic);
-  font-size: 0.96rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.09em;
   color: var(--color-offwhite-dim);
   text-transform: uppercase;
   position: relative;
-  padding: 0.6rem 0.95rem; /* Bouton bien espacé */
+  padding: 0.55rem 0.6rem;
   border-radius: 4px;
   white-space: nowrap;
   transition: color var(--transition-fast), background-color var(--transition-fast);
@@ -399,8 +401,8 @@ section {
   content: '';
   position: absolute;
   bottom: 0px;
-  left: 0.95rem;
-  right: 0.95rem;
+  left: 0.6rem;
+  right: 0.6rem;
   height: 2px;
   background-color: var(--color-lemon);
   transform: scaleX(0);
@@ -417,7 +419,7 @@ section {
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 1.25rem; /* Espace franc entre Instagram et REJOINDRE LA TEAM */
+  gap: 0.75rem;
   flex-shrink: 0;
 }
 
@@ -430,13 +432,13 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.7rem 1.25rem;
+  padding: 0.65rem 0.9rem;
   background: rgba(23, 27, 26, 0.75);
   border: 1px solid rgba(115, 125, 119, 0.45);
   border-radius: 4px;
   color: var(--color-offwhite);
   font-family: var(--font-athletic);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -463,8 +465,8 @@ section {
 }
 
 .btn-nav-cta {
-  padding: 0.75rem 1.75rem;
-  font-size: 0.96rem;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.84rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -486,26 +488,9 @@ section {
   color: var(--color-lemon);
 }
 
-@media (max-width: 1366px) {
-  .navbar-nav {
-    transform: translateX(-20px);
-  }
-}
-
-@media (max-width: 1240px) {
-  .navbar-nav {
-    transform: translateX(-10px);
-  }
-  .nav-links {
-    gap: 1.1rem;
-  }
-  .nav-link {
-    font-size: 0.88rem;
-    padding: 0.5rem 0.65rem;
-  }
-}
-
-@media (max-width: 1080px) {
+/* À partir de cette largeur, le menu complet devient un panneau : aucune
+   étiquette ne se compresse ni ne se superpose dans l'en-tête. */
+@media (max-width: 1500px) {
   .navbar-inner {
     display: flex;
     justify-content: space-between;
@@ -544,6 +529,7 @@ section {
   }
   .brand-link {
     gap: 0.65rem;
+    overflow: hidden;
   }
   .brand-logo-wrap, .brand-logo-img {
     height: 38px;
@@ -567,6 +553,50 @@ section {
   }
   .burger-btn {
     padding: 0.5rem;
+    flex: 0 0 44px;
+  }
+}
+
+/* Le téléphone priorise toujours un bouton de menu entièrement accessible. */
+@media (max-width: 420px) {
+  .navbar-inner {
+    gap: 0.5rem;
+  }
+  .brand-link {
+    flex: 1 1 auto;
+    max-width: calc(100% - 52px);
+  }
+  .nav-cta {
+    flex: 0 0 44px;
+    gap: 0;
+  }
+  .nav-instagram-btn {
+    display: none;
+  }
+  .brand-subtext {
+    min-width: 0;
+  }
+  .brand-title,
+  .brand-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-container {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+  .brand-logo-wrap,
+  .brand-logo-img {
+    height: 34px;
+  }
+  .brand-title {
+    font-size: 0.92rem;
+  }
+  .brand-subtitle {
+    font-size: 0.54rem;
   }
 }
 
@@ -706,7 +736,7 @@ section {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 740px;
+  max-width: 1130px;
 }
 
 .hero-pill {
@@ -744,7 +774,7 @@ section {
 }
 
 .hero-title {
-  font-size: clamp(2.3rem, 8.5vw, 6.4rem);
+  font-size: clamp(2.3rem, 6.8vw, 5rem);
   line-height: 0.94;
   margin-bottom: 1.5rem;
   color: var(--color-offwhite);
@@ -758,13 +788,27 @@ section {
   text-shadow: 0 0 35px rgba(196, 214, 0, 0.35);
 }
 
+@media (min-width: 601px) {
+  .hero-title .accent-glow {
+    white-space: nowrap;
+  }
+}
+
+/* Sur les ordinateurs compacts et tablettes paysage, la signature reste
+   entière sur une ligne sans sortir du visuel. */
+@media (min-width: 601px) and (max-width: 1100px) {
+  .hero-title {
+    font-size: clamp(2.3rem, 6.8vw, 4rem);
+  }
+}
+
 .hero-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.35rem);
   color: var(--color-offwhite-dim);
   font-weight: 400;
   line-height: 1.55;
   margin-bottom: 2.25rem;
-  max-width: 620px;
+  max-width: 790px;
   border-left: 3px solid var(--color-lemon);
   padding-left: 1.15rem;
 }
@@ -1279,7 +1323,9 @@ section {
   background: linear-gradient(135deg, rgba(32, 40, 36, 0.95) 0%, rgba(20, 24, 23, 0.98) 100%);
   border: 1px solid rgba(196, 214, 0, 0.4);
   border-radius: 16px;
-  padding: 4rem 3rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.75rem 2.5rem;
   text-align: center;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(196, 214, 0, 0.1);
   position: relative;
@@ -1288,7 +1334,8 @@ section {
 
 @media (max-width: 768px) {
   .cta-googleform-box {
-    padding: 2.5rem 1.5rem;
+    padding: 1.75rem 1rem;
+    border-radius: 12px;
   }
 }
 
@@ -1304,7 +1351,7 @@ section {
 }
 
 .google-form-iframe-wrap {
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--color-sage-border);
@@ -1314,9 +1361,27 @@ section {
 
 .google-form-iframe {
   width: 100%;
-  height: 980px;
+  height: 720px;
   border: none;
   display: block;
+}
+
+@media (max-width: 600px) {
+  .google-form-iframe {
+    height: 600px;
+  }
+  .reassurance-strip {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+  .cta-googleform-box .btn-lg {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    font-size: 1rem;
+  }
 }
 
 .reassurance-strip {
